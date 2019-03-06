@@ -39,10 +39,30 @@ if node['os'] == 'linux'
       default['audit']['profiles'] = [
         {
           name: 'CIS Redhat 7 - Level 1 - Server',
-          compliance: 'admin/cis-rhel7-level1',
+          compliance: 'admin/cis-rhel7-level1-server',
         },
       ]
     end
+
+    # SUSE Linux Enterprise
+    elsif node['platform'] == 'suse'
+      # SLES 11
+      if node['platform_version'] =~ /11.*/
+        default['audit']['profiles'] = [
+          {
+            name: 'CIS SUSE Linux Enterprise Server 11 Benchmark Level 1',
+            compliance: 'admin/cis-sles11-level1',
+          },
+        ]
+      # Redhat 7
+      elsif node['platform_version'] =~ /12.*/
+        default['audit']['profiles'] = [
+          {
+            name: 'CIS SUSE Linux Enterprise Server 12 Benchmark Level 1',
+            compliance: 'admin/cis-sles12-level1',
+          },
+        ]
+      end
 
     # Ubuntu
     elsif node['platform'] == 'ubuntu'
