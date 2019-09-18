@@ -19,4 +19,4 @@ chef_version '>= 13.0'
 #
 # source_url 'https://github.com/<insert_org_here>/omni_audit'
 
-depends 'audit'
+depends 'audit', '8.1.1'
