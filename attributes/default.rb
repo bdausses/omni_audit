@@ -87,17 +87,17 @@ if node['os'] == 'linux'
         },
       ]
     # Ubuntu 18.04
-    if node['platform_version'] == "18.04"
+    elsif node['platform_version'] == "18.04"
       default['audit']['profiles'] = [
         {
-          name: 'CIS Ubuntu 18.04 - Level 1 - Server',
+          name: 'CIS Ubuntu Linux 18.04 LTS Benchmark Level 1 - Server',
           compliance: 'admin/cis-ubuntu18.04lts-level1-server',
         },
       ]
     end
-    end
   end
 
+# Windows
 elsif node['os'] == 'windows'
   default['audit']['profiles'] = [
     {
