@@ -99,10 +99,12 @@ if node['os'] == 'linux'
 
 # Windows
 elsif node['os'] == 'windows'
-  default['audit']['profiles'] = [
-    {
-      name: 'Windows Baseline',
-      compliance: 'leela/windows_baseline_wrapper',
-    },
-  ]
+  if node['kernel']['name'] == "Microsoft Windows Server 2016 Datacenter"
+    default['audit']['profiles'] = [
+      {
+        name: 'CIS Microsoft Windows Server 2016 RTM (Release 1607) Benchmark Level 1 - Member Server',
+        compliance: 'admin/cis-windows2016rtm-release1607-level1-memberserver',
+      },
+    ]
+  end
 end
